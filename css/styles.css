@@ -1,0 +1,152 @@
+body {
+    text-align: center;
+	margin: 0;
+    padding: 0;
+	background: url(../images/geometry2.png);
+}
+
+.points {
+	font-size: 30px;
+    color: green;
+	animation-name: rubberBand;
+	-webkit-backface-visibility: visible !important;
+	backface-visibility: visible !important;
+	animation-duration: 0.5s;
+}
+
+.show {
+	visibility: visible !important;
+	opacity: 100 !important;
+}
+
+.hidden {
+  background: rgba(0, 0, 0, 0);
+  opacity: 0;
+  top: -999px;
+}
+
+.scoreLevel {
+	position: absolute;
+	display: none;
+	width: 20%;
+	height: 10%;
+    color: black;
+    font-family: Montserrat;
+    font-size: 4vh;
+	font-weight: 1000;
+    margin-top: 20%;
+	margin-left: 5%;
+    padding: 15px;
+    border: 2px solid cornflowerblue;
+    border-radius: 3px;
+	flex-direction: column;
+	background: linear-gradient(#b41ef6, #dec207);
+}
+
+.modal {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: url(../images/geometry2.png);
+}
+
+.modal-body {
+	font-family: Montserrat;
+	text-align: center;
+	padding: 0;
+	font-size: 1.1em;
+}
+
+.modal-title {
+	margin: 0;
+	padding: 0;
+	font-size: 1.3em;
+	font-weight: 900;
+}
+
+.modal-subtitle {
+	font-size: 1.1em;
+	font-weight: 700;
+}
+
+.wrap {
+	width: 700px;
+	height: 570px;
+	margin: 3% auto;
+	background: linear-gradient(#b41ef6, #dec207);
+	border-radius: 20px;
+	display: flex;
+	display: -webkit-flex;
+	display: -moz-flexbox;
+	display: -ms-flexbox;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+ul {
+	list-style-type: none;
+	padding: 10px;
+}
+
+.play-button {
+	text-transform: uppercase;
+	height: 100%;
+	font-weight: 700;
+	background: steelblue;
+	color: black;
+	letter-spacing: 5px;
+	font-size: inherit;
+	transition: all 0.4s;
+	-webkit-transition: all 0.4s;
+	-moz-transition: all 0.4s;
+	outline: none;
+	border-radius: 15px;
+}
+
+@keyframes shake {
+	from {
+		transform: scale3d(1, 1, 1);
+	}
+
+	50% {
+		transform: scale3d(1.2, 1.2, 1.2);
+	}
+
+	to {
+		transform: scale3d(1, 1, 1);
+	}
+}
+
+@media screen and (max-width: 510px) {
+	.canvas, .wrap {
+		width: 500px;
+		height: 600px;
+	}
+}
+
+@media screen and (max-width: 415px) {
+	.canvas, .wrap {
+		width: 95%;
+		height: 468px;
+	}
+}
+
+@media screen and (max-width: 370px) {
+	.canvas, .wrap {
+		width: 95%;
+		height: 432px;
+	}
+}
+
+@media screen and (min-width: 700px){
+	.score-panel {
+		width: 80%;
+		align-self: center;
+	}
+}
+
+@media screen and (min-width: 900px){
+	.score-panel {
+		width: 50%;
+	}
+}
