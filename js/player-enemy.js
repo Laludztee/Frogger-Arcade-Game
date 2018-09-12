@@ -1,11 +1,13 @@
 
 "use strict";
+
 //Declaring global variables
 let score = 0;
 let level = 1;
 let xStepValue = 105;
 let yStepValue = 82;
-let instructionsModal = document.getElementById('modal');
+let openModal = document.getElementById('modal');
+let closeModal = document.getElementById('close-modal');
 let playButton = document.getElementById('play-button');
 let enemyLocation = [63, 147, 230];
 let points = document.getElementById('msg');
@@ -14,7 +16,7 @@ let levelCounter = document.querySelector(".level");
 let scoreLevel = document.querySelector(".scoreLevel");
 
 document.addEventListener("DOMContentLoaded", function (event) {
-    modal.classList.add('show');
+    openModal.classList.add('show');
 	//Source: https://www.dl-sounds.com/royalty-free/fantasy-game-loop/
     var bgtrack = document.getElementById("bgtrack");
     bgtrack.autoplay = false;
@@ -24,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 playButton.addEventListener('click', () => {
 	scoreLevel.setAttribute('style', 'display: block');
-    modal.setAttribute('style', 'display: none');
+    openModal.setAttribute('style', 'display: none');
 	bgtrack.play();
 });
 
@@ -69,12 +71,12 @@ Enemy.prototype.update = function(dt) {
 	
 	//On collision with bugs
 	//Source: https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript/Collision_detection
-	if (player.x + 80 > this.x &&
-		player.x  < this.x + 80 &&
+	if (player.x + 55 > this.x &&
+		player.x  < this.x + 55 &&
 		player.y + 50 > this.y &&
 		player.y < this.y + 50) {
 		player.reset();
-		score -= 2;
+		scoreCounter.innerHTML = `Score: ${score-= 2}`;
 		points.classList.add("points");
 		points.innerHTML = '<text style="color:red"> Aww! </text>';
 		setTimeout(() => {
@@ -86,8 +88,8 @@ Enemy.prototype.update = function(dt) {
 
 //when the player completes a level by reaching the water tiles
 	function nextLevel() {
-    level++;
-    score += 10;
+    scoreCounter.innerHTML = `Score: ${score+= 10}`;
+    levelCounter.innerHTML = `Level: ${level++}`;
     points.classList.add("points");
     points.innerHTML = '<text style="color:green"> Welldone! </text>';
 		setTimeout(() => {
@@ -277,14 +279,15 @@ function toggleChoicesOverlay() {
 //Player's Score and Level at the end of the game
 let displayScoreLevel = () => {
     //call up congratulations modal when user reaches level 10 and reset all progress values
-    /*if (Level === 10) {
+    if (level === 15) {
         allEnemies = [];
-        level = 1;
+        scoreCounter.innerHTML = `Score: ${score = 0}`;
+		levelCounter.innerHTML = `Level: ${level = 1}`;
 		//TODO: Closing modal
 		bgtrack.pause();
-        //modal2.classList.add('show');
-        document.getElementById('results').innerHTML = `<h3> Your final score is ${Score} <br> You're genius!!.</h3>`
+        closeModal.classList.add('show');
+        document.getElementById('results').innerHTML = `<h3> Whoop Whoop! You completed all levels and your final score is ${score} <br></h3>`
         document.removeEventListener('keyup', pressedKeys);
         document.removeEventListener("touchstart", startTouch);
-    }*/
+    }
 };
