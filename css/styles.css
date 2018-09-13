@@ -3,15 +3,14 @@ body {
 	margin: 0;
     padding: 0;
 	background: url(../images/geometry2.png);
+	overflow-y: hidden;
 }
 
 .points {
 	font-size: 30px;
     color: green;
-	animation-name: rubberBand;
 	-webkit-backface-visibility: visible !important;
 	backface-visibility: visible !important;
-	animation-duration: 0.5s;
 }
 
 .show {
@@ -40,7 +39,7 @@ body {
     border: 2px solid cornflowerblue;
     border-radius: 3px;
 	flex-direction: column;
-	background: linear-gradient(#b41ef6, #dec207);
+	background: linear-gradient(#1D6FDB, #D7E0D8, #4BCC54);
 }
 
 .modal {
@@ -69,11 +68,32 @@ body {
 	font-weight: 700;
 }
 
+#close-modal {
+	display: none;
+	width: 700px;
+	height: 570px;
+    color: black;
+    font-family: Montserrat;
+    font-size: 4vh;
+	font-weight: 700;
+    margin: 3% auto;
+    padding: 15px;
+    border: 2px solid cornflowerblue;
+    border-radius: 20px;
+	background: linear-gradient(#1D6FDB, #D7E0D8, #4BCC54);
+	display: flex;
+	display: -webkit-flex;
+	display: -moz-flexbox;
+	display: -ms-flexbox;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
 .wrap {
 	width: 700px;
 	height: 570px;
 	margin: 3% auto;
-	background: linear-gradient(#b41ef6, #dec207);
+	background: linear-gradient(#1D6FDB, #D7E0D8, #4BCC54);
 	border-radius: 20px;
 	display: flex;
 	display: -webkit-flex;
@@ -90,7 +110,6 @@ ul {
 
 .play-button {
 	text-transform: uppercase;
-	height: 100%;
 	font-weight: 700;
 	background: steelblue;
 	color: black;
@@ -101,52 +120,5 @@ ul {
 	-moz-transition: all 0.4s;
 	outline: none;
 	border-radius: 15px;
-}
-
-@keyframes shake {
-	from {
-		transform: scale3d(1, 1, 1);
-	}
-
-	50% {
-		transform: scale3d(1.2, 1.2, 1.2);
-	}
-
-	to {
-		transform: scale3d(1, 1, 1);
-	}
-}
-
-@media screen and (max-width: 510px) {
-	.canvas, .wrap {
-		width: 500px;
-		height: 600px;
-	}
-}
-
-@media screen and (max-width: 415px) {
-	.canvas, .wrap {
-		width: 95%;
-		height: 468px;
-	}
-}
-
-@media screen and (max-width: 370px) {
-	.canvas, .wrap {
-		width: 95%;
-		height: 432px;
-	}
-}
-
-@media screen and (min-width: 700px){
-	.score-panel {
-		width: 80%;
-		align-self: center;
-	}
-}
-
-@media screen and (min-width: 900px){
-	.score-panel {
-		width: 50%;
-	}
+	cursor: pointer;
 }

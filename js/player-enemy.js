@@ -6,9 +6,12 @@ let score = 0;
 let level = 1;
 let xStepValue = 105;
 let yStepValue = 82;
+const canvas = document.getElementById('canvas');
 let openModal = document.getElementById('modal');
 let closeModal = document.getElementById('close-modal');
 let playButton = document.getElementById('play-button');
+let replayButton = document.getElementById('replay');
+let closeButton = document.getElementById('close-button');
 let enemyLocation = [63, 147, 230];
 let points = document.getElementById('msg');
 let scoreCounter = document.querySelector(".score");
@@ -27,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 playButton.addEventListener('click', () => {
 	scoreLevel.setAttribute('style', 'display: block');
     openModal.setAttribute('style', 'display: none');
+    closeModal.setAttribute('style', 'display: none');
 	bgtrack.play();
 });
 
@@ -76,7 +80,7 @@ Enemy.prototype.update = function(dt) {
 		player.y + 50 > this.y &&
 		player.y < this.y + 50) {
 		player.reset();
-		scoreCounter.innerHTML = `Score: ${score-= 2}`;
+		scoreCounter.innerHTML = `Score: ${score-= 3}`;
 		points.classList.add("points");
 		points.innerHTML = '<text style="color:red"> Aww! </text>';
 		setTimeout(() => {
@@ -85,22 +89,52 @@ Enemy.prototype.update = function(dt) {
 		}, 2500);
 	}
 };
+    
+    /*enemyLocation = [63, 147, 230];
+    enemyLocation.forEach(function (locationY) {
+        enemy = new Enemy(0, locationY, 200);
+        allEnemies.push(enemy);*/
 
 //when the player completes a level by reaching the water tiles
 	function nextLevel() {
-    scoreCounter.innerHTML = `Score: ${score+= 10}`;
-    levelCounter.innerHTML = `Level: ${level++}`;
-    points.classList.add("points");
-    points.innerHTML = '<text style="color:green"> Welldone! </text>';
-		setTimeout(() => {
-			points.classList.remove("points");
-			points.innerText = '';
-		}, 2500);
-		moreBugs(level);
-		setTimeout(() => {
-			player.reset();
-		}, 500);
+	if (level <= 10) {
+		scoreCounter.innerHTML = `Score: ${score+= 10}`;
+		levelCounter.innerHTML = `Level: ${level++}`;
+		points.classList.add("points");
+		points.innerHTML = '<text style="color:green"> Well done! </text>';
+			setTimeout(() => {
+				points.classList.remove("points");
+				points.innerText = '';
+			}, 2500);
+			moreBugs(level);
+			setTimeout(() => {
+				player.reset();
+			}, 500);
 	}
+	else 
+		displayScoreLevel();
+}
+
+let displayScoreLevel = () => {
+    //call up congratulations modal when user reaches level 10 and reset all progress values
+        bgtrack.pause();
+        closeModal.setAttribute('style', 'display: block');
+        scoreLevel.setAttribute('style', 'display: none');
+        document.getElementById('results').innerHTML = `<h4> Whoop Whoop! You completed all levels!<br><br><br> Like to play again? Click the button below</h4>`;
+		document.removeEventListener('keyup', keyPress);
+        document.removeEventListener('touchstart', startTouch);
+};
+
+replayButton.addEventListener('click', () => {
+	levelCounter.innerHTML = `Score: ${level = 1}`;
+    scoreCounter.innerHTML = `Score: ${score = 0}`;
+	scoreLevel.setAttribute('style', 'display: block');
+    openModal.setAttribute('style', 'display: none');
+    closeModal.setAttribute('style', 'display: none');
+	bgtrack.play();
+	document.addEventListener('keyup', keyPress, true);
+    document.addEventListener('touchstart', startTouch, true);
+});
 	
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
@@ -185,33 +219,21 @@ choiceForm.addEventListener('submit', event => {
   }
   player.updateImage(imageChoice);
 });
-  
-function resetGame() {
-    level = 1;
-    score = 0;
-    allEnemies = [];
-    enemyLocation = [63, 147, 230];
-    enemyLocation.forEach(function (locationY) {
-        enemy = new Enemy(0, locationY, 200);
-        allEnemies.push(enemy);
-    });
-    document.addEventListener('keyup', pressedKeys, false);
-    document.addEventListener("touchstart", startTouch, false);
-}
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
-document.addEventListener('keyup', function(e) {
+
+function keyPress(e) {
     let allowedKeys = {
         37: 'left',
         38: 'up',
         39: 'right',
         40: 'down'
     };
-
     player.handleInput(allowedKeys[e.keyCode]);
-});
+}
 
+document.addEventListener('keyup', keyPress);
 document.addEventListener('touchstart', startTouch, false);
 document.addEventListener('touchmove', moveTouch, false);
 
@@ -275,19 +297,3 @@ function moveTouch(e) {
 function toggleChoicesOverlay() {
   choiceForm.parentElement.parentElement.parentElement.classList.toggle('hidden');
 }
-
-//Player's Score and Level at the end of the game
-let displayScoreLevel = () => {
-    //call up congratulations modal when user reaches level 10 and reset all progress values
-    if (level === 15) {
-        allEnemies = [];
-        scoreCounter.innerHTML = `Score: ${score = 0}`;
-		levelCounter.innerHTML = `Level: ${level = 1}`;
-		//TODO: Closing modal
-		bgtrack.pause();
-        closeModal.classList.add('show');
-        document.getElementById('results').innerHTML = `<h3> Whoop Whoop! You completed all levels and your final score is ${score} <br></h3>`
-        document.removeEventListener('keyup', pressedKeys);
-        document.removeEventListener("touchstart", startTouch);
-    }
-};
