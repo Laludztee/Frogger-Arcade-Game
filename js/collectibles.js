@@ -1,7 +1,12 @@
+/*
+* @description The collectible classes are created below. The functions first place the collectibles off the canvas and when
+* 		a certain period elapses, the collectibles change location back to canvas. When the player hits the collectibles,
+*		the score increases appropriately and they change location again, off canvas.
+*/
 
 //Gems
 let Gems = function(x, y) {
-	this.x = -300;
+    this.x = -300;
     this.y = -300;
     this.sprite = 'images/Gem Blue.png';
 	
