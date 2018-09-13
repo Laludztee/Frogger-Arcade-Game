@@ -7,9 +7,9 @@ let level = 1;
 let xStepValue = 105;
 let yStepValue = 82;
 let enemyLocation = [63, 147, 230];
+let openModal = document.getElementById('modal');
+let closeModal = document.getElementById('close-modal');
 const canvas = document.getElementById('canvas');
-const openModal = document.getElementById('modal');
-const closeModal = document.getElementById('close-modal');
 const playButton = document.getElementById('play-button');
 const replayButton = document.getElementById('replay');
 const closeButton = document.getElementById('close-button');
@@ -129,9 +129,9 @@ function nextLevel() {
 			player.reset();
 		}, 500);
 	}
-	else 
+	else {
 		displayScoreLevel();
-	
+	}
 }
 
 let closingModal = () => {
