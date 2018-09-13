@@ -6,17 +6,17 @@ let score = 0;
 let level = 1;
 let xStepValue = 105;
 let yStepValue = 82;
-const canvas = document.getElementById('canvas');
-let openModal = document.getElementById('modal');
-let closeModal = document.getElementById('close-modal');
-let playButton = document.getElementById('play-button');
-let replayButton = document.getElementById('replay');
-let closeButton = document.getElementById('close-button');
 let enemyLocation = [63, 147, 230];
-let points = document.getElementById('msg');
-let scoreCounter = document.querySelector(".score");
-let levelCounter = document.querySelector(".level");
-let scoreLevel = document.querySelector(".scoreLevel");
+const canvas = document.getElementById('canvas');
+const openModal = document.getElementById('modal');
+const closeModal = document.getElementById('close-modal');
+const playButton = document.getElementById('play-button');
+const replayButton = document.getElementById('replay');
+const closeButton = document.getElementById('close-button');
+const points = document.getElementById('msg');
+const scoreCounter = document.querySelector(".score");
+const levelCounter = document.querySelector(".level");
+const scoreLevel = document.querySelector(".scoreLevel");
 
 document.addEventListener("DOMContentLoaded", function (event) {
     openModal.classList.add('show');
@@ -129,8 +129,9 @@ function nextLevel() {
 			player.reset();
 		}, 500);
 	}
-	else 
+	else {
 		displayScoreLevel();
+	}
 }
 
 let closingModal = () => {
@@ -198,28 +199,28 @@ Player.prototype.render = function() {
 
 // and a handleInput() method.
 Player.prototype.handleInput = function(key) {
-    if (key == 'left' && this.x > 0) {
+    if (key === 'left' && this.x > 0) {
         this.x -= xStepValue;
     }
 
-    if (key == 'right' && this.x < 405) {
+    if (key === 'right' && this.x < 405) {
         this.x += xStepValue;
     }
 
-    if (key == 'up' && this.y > 0) {
+    if (key === 'up' && this.y > 0) {
         this.y -= yStepValue;
         if (this.y < 0) {
             nextLevel();
         }
     }
 
-    if (key == 'down' && this.y < 405) {
+    if (key === 'down' && this.y < 405) {
         this.y += yStepValue;
     }
     // returns player back to starting position when player reaches the water tiles
     if (this.y < 0) {
         setTimeout(() => {
-            player.reset();
+            this.reset();
         }, 800);
 
     }
