@@ -27,6 +27,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
     bgtrack.volume = 0.7;
 });
 
+/*
+*
+* @description when the play button is clicked, the modals should be hidden and only the scoreBoard and canvas should be on display
+*
+*/
+
 playButton.addEventListener('click', () => {
     scoreLevel.setAttribute('style', 'display: block');
     openModal.setAttribute('style', 'display: none');
@@ -48,6 +54,12 @@ let Enemy = function(x, y, velocity) {
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
 };
+
+/*
+*
+* @description as the level inceases, the bugs should increase in number and speed
+*
+*/
 
 let moreBugs = function(numEnemies) {
     // remove all previous enemies on canvas
@@ -73,7 +85,11 @@ Enemy.prototype.update = function(dt) {
         this.velocity = 100 + Math.floor(Math.random() * 222);
     }
 	
-	//On collision with bugs
+/*
+*
+* @description when the player hits any of the bugs, the player returns to its original position
+*		scores reduce by 3 points
+*/
 	//Source: https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript/Collision_detection
 	if (player.x + 55 > this.x &&
 		player.x  < this.x + 55 &&
@@ -89,11 +105,13 @@ Enemy.prototype.update = function(dt) {
 		}, 2500);
 	}
 };
-    
-    /*enemyLocation = [63, 147, 230];
-    enemyLocation.forEach(function (locationY) {
-        enemy = new Enemy(0, locationY, 200);
-        allEnemies.push(enemy);*/
+
+/*
+*
+* @description when the player reaches the water tiles, a new level begins
+*		player can only move from level 1 to 10
+*		at level 11, the closing modal pops up
+*/
 
 //when the player completes a level by reaching the water tiles
 function nextLevel() {
@@ -115,8 +133,8 @@ function nextLevel() {
 		displayScoreLevel();
 }
 
-let displayScoreLevel = () => {
-    //call up congratulations modal when user reaches level 10 and reset all progress values
+let closingModal = () => {
+    //the background music and keyboard controls are disabled, and the modal pops up
     bgtrack.pause();
     closeModal.setAttribute('style', 'display: block');
     scoreLevel.setAttribute('style', 'display: none');
@@ -124,6 +142,13 @@ let displayScoreLevel = () => {
     document.removeEventListener('keyup', keyPress);
     document.removeEventListener('touchstart', startTouch);
 };
+
+/*
+*
+* @description the game resets when user clicks on the replay button. level and score return to reset values
+*		modals are hidden
+*		the background music and keyboard controls resume
+*/
 
 replayButton.addEventListener('click', () => {
     levelCounter.innerHTML = `Score: ${level = 1}`;
