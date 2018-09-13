@@ -13,7 +13,9 @@ Hello there! Welcome to my Frogger Arcade Game! :satisfied: In this game, bugs a
 **Pick any character you prefer and Play away! :smiley:**
 
 ## Implementation
-The starter file for this app was provided by Udacity contatining HTML, CSS and JavaScript: app.js, engine.js and resources.js and images folders. I built on the game by editing the app.js file. The app engine (engine.js) was only edited to render and update new classes that I created in app.js
+The starter file for this app was provided by Udacity contatining HTML, CSS and JavaScript: app.js, engine.js and resources.js and images folders. I built on the game by editing the app.js file. The app engine (engine.js) was only edited to render and update new classes that I created in app.js.
+
+You can run this game by opening index.html in a browser. You'd need a good internet connection to successfully run and play this game.
 
 ## Dependencies
 The game largely depends on the png images that were provided by Udacity in the images folder. These images make up the canvas, the bugs, player and collectibles. Without these images, this Frogger Arcade game is just text.
