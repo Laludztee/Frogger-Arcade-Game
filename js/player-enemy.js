@@ -7,16 +7,16 @@ let level = 1;
 let xStepValue = 105;
 let yStepValue = 82;
 let enemyLocation = [63, 147, 230];
+const canvas = document.getElementById('canvas');
 let openModal = document.getElementById('modal');
 let closeModal = document.getElementById('close-modal');
-const canvas = document.getElementById('canvas');
-const playButton = document.getElementById('play-button');
-const replayButton = document.getElementById('replay');
-const closeButton = document.getElementById('close-button');
-const points = document.getElementById('msg');
-const scoreCounter = document.querySelector(".score");
-const levelCounter = document.querySelector(".level");
-const scoreLevel = document.querySelector(".scoreLevel");
+let playButton = document.getElementById('play-button');
+let replayButton = document.getElementById('replay');
+let closeButton = document.getElementById('close-button');
+let points = document.getElementById('msg');
+let scoreCounter = document.querySelector(".score");
+let levelCounter = document.querySelector(".level");
+let scoreLevel = document.querySelector(".scoreLevel");
 
 document.addEventListener("DOMContentLoaded", function (event) {
     openModal.classList.add('show');
