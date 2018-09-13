@@ -8,15 +8,15 @@ let xStepValue = 105;
 let yStepValue = 82;
 let enemyLocation = [63, 147, 230];
 const canvas = document.getElementById('canvas');
-let openModal = document.getElementById('modal');
-let closeModal = document.getElementById('close-modal');
-let playButton = document.getElementById('play-button');
-let replayButton = document.getElementById('replay');
-let closeButton = document.getElementById('close-button');
-let points = document.getElementById('msg');
-let scoreCounter = document.querySelector(".score");
-let levelCounter = document.querySelector(".level");
-let scoreLevel = document.querySelector(".scoreLevel");
+const openModal = document.getElementById('modal');
+const closeModal = document.getElementById('close-modal');
+const playButton = document.getElementById('play-button');
+const replayButton = document.getElementById('replay');
+const closeButton = document.getElementById('close-button');
+const points = document.getElementById('msg');
+const scoreCounter = document.querySelector(".score");
+const levelCounter = document.querySelector(".level");
+const scoreLevel = document.querySelector(".scoreLevel");
 
 document.addEventListener("DOMContentLoaded", function (event) {
     openModal.classList.add('show');
@@ -134,7 +134,7 @@ function nextLevel() {
 	}
 }
 
-let closingModal = () => {
+let displayScoreLevel = () => {
     //the background music and keyboard controls are disabled, and the modal pops up
     bgtrack.pause();
     closeModal.setAttribute('style', 'display: block');
@@ -220,7 +220,7 @@ Player.prototype.handleInput = function(key) {
     // returns player back to starting position when player reaches the water tiles
     if (this.y < 0) {
         setTimeout(() => {
-            player.reset();
+            this.reset();
         }, 800);
 
     }
