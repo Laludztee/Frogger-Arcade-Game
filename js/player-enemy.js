@@ -220,7 +220,7 @@ Player.prototype.handleInput = function(key) {
     // returns player back to starting position when player reaches the water tiles
     if (this.y < 0) {
         setTimeout(() => {
-            this.reset();
+            player.reset();
         }, 800);
 
     }
