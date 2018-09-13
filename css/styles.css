@@ -1,45 +1,45 @@
 body {
-    text-align: center;
-	margin: 0;
-    padding: 0;
-	background: url(../images/geometry2.png);
-	overflow-y: hidden;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        background: url(../images/geometry2.png);
+        overflow-y: hidden;
 }
 
 .points {
-	font-size: 30px;
-    color: green;
-	-webkit-backface-visibility: visible !important;
-	backface-visibility: visible !important;
+        font-size: 30px;
+        color: green;
+        -webkit-backface-visibility: visible !important;
+        backface-visibility: visible !important;
 }
 
 .show {
-	visibility: visible !important;
-	opacity: 100 !important;
+        visibility: visible !important;
+        opacity: 100 !important;
 }
 
 .hidden {
-  background: rgba(0, 0, 0, 0);
-  opacity: 0;
-  top: -999px;
+        background: rgba(0, 0, 0, 0);
+        opacity: 0;
+        top: -999px;
 }
 
 .scoreLevel {
-	position: absolute;
-	display: none;
-	width: 20%;
-	height: 30%;
-    color: black;
-    font-family: Montserrat;
-    font-size: 4vh;
-	font-weight: 1000;
-    margin-top: 15%;
-	margin-left: 5%;
-    padding: 15px;
-    border: 2px solid cornflowerblue;
-    border-radius: 3px;
-	flex-direction: column;
-	background: linear-gradient(#1D6FDB, #D7E0D8, #4BCC54);
+        position: absolute;
+        display: none;
+        width: 20%;
+        height: 30%;
+        color: black;
+        font-family: Montserrat;
+        font-size: 4vh;
+        font-weight: 1000;
+        margin-top: 15%;
+        margin-left: 5%;
+        padding: 15px;
+        border: 2px solid cornflowerblue;
+        border-radius: 3px;
+        flex-direction: column;
+        background: linear-gradient(#1D6FDB, #D7E0D8, #4BCC54);
 }
 
 .modal {
@@ -72,14 +72,14 @@ body {
 	display: none;
 	width: 700px;
 	height: 570px;
-    color: black;
-    font-family: Montserrat;
-    font-size: 4vh;
+        color: black;
+        font-family: Montserrat;
+        font-size: 4vh;
 	font-weight: 700;
-    margin: 3% auto;
-    padding: 15px;
-    border: 2px solid cornflowerblue;
-    border-radius: 20px;
+        margin: 3% auto;
+        padding: 15px;
+        border: 2px solid cornflowerblue;
+        border-radius: 20px;
 	background: linear-gradient(#1D6FDB, #D7E0D8, #4BCC54);
 	display: flex;
 	display: -webkit-flex;
