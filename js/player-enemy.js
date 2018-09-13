@@ -129,9 +129,9 @@ function nextLevel() {
 			player.reset();
 		}, 500);
 	}
-	else {
+	else 
 		displayScoreLevel();
-	}
+	
 }
 
 let closingModal = () => {
