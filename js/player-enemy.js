@@ -20,18 +20,18 @@ let scoreLevel = document.querySelector(".scoreLevel");
 
 document.addEventListener("DOMContentLoaded", function (event) {
     openModal.classList.add('show');
-	//Source: https://www.dl-sounds.com/royalty-free/fantasy-game-loop/
+    //Source: https://www.dl-sounds.com/royalty-free/fantasy-game-loop/
     var bgtrack = document.getElementById("bgtrack");
     bgtrack.autoplay = false;
-	bgtrack.loop = true;
+    bgtrack.loop = true;
     bgtrack.volume = 0.7;
 });
 
 playButton.addEventListener('click', () => {
-	scoreLevel.setAttribute('style', 'display: block');
+    scoreLevel.setAttribute('style', 'display: block');
     openModal.setAttribute('style', 'display: none');
     closeModal.setAttribute('style', 'display: none');
-	bgtrack.play();
+    bgtrack.play();
 });
 
 scoreCounter.innerHTML = `Score: ${score}`;
@@ -41,7 +41,7 @@ levelCounter.innerHTML = `Level: ${level}`;
 let Enemy = function(x, y, velocity) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
-	this.x = x;
+    this.x = x;
     this.y = y;
     this.velocity = velocity;
     // The image/sprite for our enemies, this uses
@@ -96,20 +96,20 @@ Enemy.prototype.update = function(dt) {
         allEnemies.push(enemy);*/
 
 //when the player completes a level by reaching the water tiles
-	function nextLevel() {
+function nextLevel() {
 	if (level <= 10) {
 		scoreCounter.innerHTML = `Score: ${score+= 10}`;
 		levelCounter.innerHTML = `Level: ${level++}`;
 		points.classList.add("points");
 		points.innerHTML = '<text style="color:green"> Well done! </text>';
-			setTimeout(() => {
-				points.classList.remove("points");
-				points.innerText = '';
-			}, 2500);
-			moreBugs(level);
-			setTimeout(() => {
-				player.reset();
-			}, 500);
+		setTimeout(() => {
+			points.classList.remove("points");
+			points.innerText = '';
+		}, 2500);
+		moreBugs(level);
+		setTimeout(() => {
+			player.reset();
+		}, 500);
 	}
 	else 
 		displayScoreLevel();
@@ -117,22 +117,22 @@ Enemy.prototype.update = function(dt) {
 
 let displayScoreLevel = () => {
     //call up congratulations modal when user reaches level 10 and reset all progress values
-        bgtrack.pause();
-        closeModal.setAttribute('style', 'display: block');
-        scoreLevel.setAttribute('style', 'display: none');
-        document.getElementById('results').innerHTML = `<h4> Whoop Whoop! You completed all levels!<br><br><br> Like to play again? Click the button below</h4>`;
-		document.removeEventListener('keyup', keyPress);
-        document.removeEventListener('touchstart', startTouch);
+    bgtrack.pause();
+    closeModal.setAttribute('style', 'display: block');
+    scoreLevel.setAttribute('style', 'display: none');
+    document.getElementById('results').innerHTML = `<h4> Whoop Whoop! You completed all levels!<br><br><br> Like to play again? Click the button below</h4>`;
+    document.removeEventListener('keyup', keyPress);
+    document.removeEventListener('touchstart', startTouch);
 };
 
 replayButton.addEventListener('click', () => {
-	levelCounter.innerHTML = `Score: ${level = 1}`;
+    levelCounter.innerHTML = `Score: ${level = 1}`;
     scoreCounter.innerHTML = `Score: ${score = 0}`;
-	scoreLevel.setAttribute('style', 'display: block');
+    scoreLevel.setAttribute('style', 'display: block');
     openModal.setAttribute('style', 'display: none');
     closeModal.setAttribute('style', 'display: none');
-	bgtrack.play();
-	document.addEventListener('keyup', keyPress, true);
+    bgtrack.play();
+    document.addEventListener('keyup', keyPress, true);
     document.addEventListener('touchstart', startTouch, true);
 });
 	
@@ -144,7 +144,7 @@ Enemy.prototype.render = function() {
 // Place all enemy objects in an array called allEnemies
 let allEnemies = [];
 enemyLocation.forEach(function(locationY) {
-	// Now instantiate your objects.
+    // Now instantiate your objects.
     const enemy = new Enemy(0, locationY, 200);
     allEnemies.push(enemy);
 });
@@ -158,8 +158,8 @@ let Player = function(x, y) {
 
 // This class requires an update(), 
 Player.prototype.updateImage = function(image) {
-  this.sprite = `images/char-${image}.png`;
-  this.render();
+    this.sprite = `images/char-${image}.png`;
+    this.render();
 };
 Player.prototype.reset = function() {
     player.x = 202;
@@ -206,17 +206,17 @@ const player = new Player(202, 405);
 // player's character choice
 const choiceForm = document.querySelector('.player-character');
 choiceForm.addEventListener('submit', event => {
-  event.preventDefault();
+     event.preventDefault();
 
   // get the selected player icon
-  let imageChoice;
-  const images = [...choiceForm.querySelectorAll('input[name="player"]')];
-  for (const image of images) {
-    if (image.checked) {
-      imageChoice = image.value;
-      break;
-    }
-  }
+      let imageChoice;
+      const images = [...choiceForm.querySelectorAll('input[name="player"]')];
+      for (const image of images) {
+          if (image.checked) {
+              imageChoice = image.value;
+              break;
+          }
+      }    
   player.updateImage(imageChoice);
 });
 
@@ -293,7 +293,3 @@ function moveTouch(e) {
     initialX = null;
     initialY = null;
 };
-
-function toggleChoicesOverlay() {
-  choiceForm.parentElement.parentElement.parentElement.classList.toggle('hidden');
-}
