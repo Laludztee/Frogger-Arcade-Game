@@ -21,4 +21,4 @@ You can run this game by opening index.html in a browser. You'd need a good inte
 The game largely depends on the png images that were provided by Udacity in the images folder. These images make up the canvas, the bugs, player and collectibles. Without these images, this Frogger Arcade game is just text.
 
 ## Demo
-To view this app live and play the game, [Click here](https://laludztee.github.io/FroggerArcadeGame/)
+To view this app live and play the game, [Click here](https://laludztee.github.io/Frogger-Arcade-Game/)
